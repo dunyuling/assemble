@@ -1,0 +1,14 @@
+#c代码编译成汇编代码
+gcc -O2 -S c_ass_1.c -m32 -fno-omit-frame-pointer
+
+#汇编代码生成可执行文件
+as -o my-object-file.o helloworld.s
+    -gstabs //产生带调试信息的object文件
+    64位环境下添加命令行参数:--32
+
+ld -o my-exe-file my-object-file.o
+    可以有多个.o文件
+    64位环境下添加命令行参数: -m elf_i386
+    实际成功执行的命令行为:
+    1)ld -melf_i386 -dynamic-linker /lib32/ld-linux.so.2 hello.o /usr/lib32/crt1.o /usr/lib32/crti.o /usr/lib32/crtn.o -lc -o hello
+    2)ld -dynamic-linker /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 hello.o /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /usr/lib/x86_64-linux-gnu/crtn.o -lc -o hello

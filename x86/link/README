@@ -1,0 +1,5 @@
+gcc -c main.c
+objdump -r -d main.o
+
+gcc -o p main.c
+objdump -r -d p
