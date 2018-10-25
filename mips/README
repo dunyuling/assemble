@@ -1,0 +1,2 @@
+由于本机架构为intel x86,故需要在spim的模拟环境中,运行mips架构下的汇编程序
+spim -file xx.s
